@@ -1,9 +1,9 @@
 #!/usr/bin/python3
 """write a script to write data to a CSV from an api"""
 
+import csv
 import requests
 import sys
-import csv
 
 
 def get_employee_prog_csv(employee_id):
