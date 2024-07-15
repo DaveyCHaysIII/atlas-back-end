@@ -2,9 +2,10 @@
 """write a script that creates a dictionary of a list of dictionaries
 based on JSON data from an API"""
 
+import json
 import requests
 import sys
-import json
+
 
 
 def get_all_employees_todo_progress():
