@@ -28,7 +28,7 @@ def get_employee_prog_csv(employee_id):
     todos = todos_data.json()
     csv_filename = f"{employee_id}.csv"
     with open(csv_filename, mode='w', newline='') as csv_file:
-        csv_writer = csv.writer(csv_file, quoting=csv.QUOTE_MINIMAL)
+        csv_writer = csv.writer(csv_file, quoting=csv.QUOTE_ALL)
         for task in todos:
             csv_writer.writerow([employee_id,
                                 employee_name,
