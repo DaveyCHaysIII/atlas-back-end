@@ -10,30 +10,29 @@ def get_employee_prog_csv(employee_id):
     """function gets data from API of a given employee ID"""
     base_url = "https://jsonplaceholder.typicode.com"
 
-    # Fetch employee details
-    employee_data = requests.get(f"{base_url}/users/{employee_id}")
-    if employee_data.status_code != 200:
-        print("Failed to fetch employee details")
+    todo_url = f'{base_url}/todos?userId={employee_id}'
+    user_url = f'{base_url}/users?id={employee_id}'
+    response1 = requests.get(todo_url)
+    response2 = requests.get(user_url)
+
+    if response1.status_code != 200:
+        print(f'Failed to fetch todos for employee ID {employee_id}.')
         return
 
-    employee = employee_data.json()
-    employee_name = employee['name']
-
-    todos_data = requests.get(f"{base_url}/todos",
-                              params={'userId': employee_id})
-    if todos_data.status_code != 200:
-        print("Failed to fetch TODO list")
+    if response2.status_code != 200:
+        print(f'Failed to fetch name for employee ID {employee_id}.')
         return
 
-    todos = todos_data.json()
-    csv_filename = f"{employee_id}.csv"
-    with open(csv_filename, mode='w', newline='') as csv_file:
-        csv_writer = csv.writer(csv_file, quoting=csv.QUOTE_ALL)
+    todos = response1.json()
+    user_name = response2.json()[0]['username']
+    file_name = f'{employee_id}.csv'
+
+    with open(file_name, mode='w', newline='') as f:
+        writer = csv.writer(f, quoting=csv.QUOTE_ALL)
         for task in todos:
-            csv_writer.writerow([employee_id,
-                                employee_name,
-                                task['completed'],
-                                task['title']])
+            writer.writerow([
+                employee_id, user_name,
+                task['completed'], task['title']])
 
 
 if __name__ == "__main__":
