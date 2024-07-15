@@ -6,6 +6,7 @@ import sys
 
 
 def get_employee_prog(employee_id):
+    """function gets data from API of a given employee ID"""
     base_url = "https://jsonplaceholder.typicode.com"
 
     # Fetch employee details
