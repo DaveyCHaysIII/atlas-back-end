@@ -29,7 +29,7 @@ def get_employee_prog(employee_id):
     finished_tasks = [task for task in todos if task['completed']]
     number_finished_tasks = len(finished_tasks)
 
-    print(f"Employee {employee_name}" 
+    print(f"Employee {employee_name}"
           + "is done with tasks({number_finished_tasks}/{total_tasks}):")
     for task in finished_tasks:
         print(f"\t {task['title']}")
