@@ -29,10 +29,6 @@ def get_employee_prog_csv(employee_id):
     csv_filename = f"{employee_id}.csv"
     with open(csv_filename, mode='w', newline='') as csv_file:
         csv_writer = csv.writer(csv_file, quoting=csv.QUOTE_MINIMAL)
-        csv_writer.writerow(["USER_ID",
-                             "USERNAME",
-                             "TASK_COMPLETED_STATUS",
-                             "TASK_TITLE"])
         for task in todos:
             csv_writer.writerow([employee_id,
                                 employee_name,
