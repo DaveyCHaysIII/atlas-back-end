@@ -4,6 +4,7 @@
 import requests
 import sys
 
+
 def get_employee_prog(employee_id):
     base_url = "https://jsonplaceholder.typicode.com"
 
@@ -16,7 +17,8 @@ def get_employee_prog(employee_id):
     employee = employee_data.json()
     employee_name = employee['name']
 
-    todos_data = requests.get(f"{base_url}/todos", params={'userId': employee_id})
+    todos_data = requests.get(f"{base_url}/todos",
+                              params={'userId': employee_id})
     if todos_data.status_code != 200:
         print("Failed to fetch TODO list")
         return
@@ -26,9 +28,11 @@ def get_employee_prog(employee_id):
     finished_tasks = [task for task in todos if task['completed']]
     number_finished_tasks = len(finished_tasks)
 
-    print(f"Employee {employee_name} is done with tasks({number_finished_tasks}/{total_tasks}):")
+    print(f"Employee {employee_name} is done with tasks(
+          {number_finished_tasks}/{total_tasks}): ")
     for task in finished_tasks:
         print(f"\t {task['title']}")
+
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
