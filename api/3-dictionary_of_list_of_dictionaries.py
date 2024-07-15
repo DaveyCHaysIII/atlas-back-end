@@ -45,7 +45,7 @@ def get_all_employees_todo_progress():
             })
 
         # Add to the all_tasks dictionary
-        all_tasks[employee_id] = employee_tasks
+        all_tasks[str(employee_id)] = employee_tasks
 
     # Export data to JSON
     json_filename = "todo_all_employees.json"
