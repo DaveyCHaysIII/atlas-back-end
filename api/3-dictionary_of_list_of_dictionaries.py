@@ -7,7 +7,6 @@ import requests
 import sys
 
 
-
 def get_all_employees_todo_progress():
     # Base URLs for the API
     base_url = "https://jsonplaceholder.typicode.com"
